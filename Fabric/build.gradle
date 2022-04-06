@@ -118,6 +118,8 @@ project.publishing {
 // CurseForge Publishing
 task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
 
+    disableVersionDetection()
+    
     apiToken = findProperty('curse_auth')
 
     def mainFile = upload(curse_project, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
