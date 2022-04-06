@@ -9,6 +9,7 @@ public class EnchDescFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        new EnchDescCommon(FabricLoader.getInstance().getConfigDir());
+        final EnchDescCommon common = new EnchDescCommon(FabricLoader.getInstance().getConfigDir());
+        ItemTooltipCallback.EVENT.register(common::onItemTooltip);
     }
 }

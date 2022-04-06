@@ -1,6 +1,5 @@
 package net.darkhax.enchdesc;
 
-import net.darkhax.bookshelf.api.Services;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;
 import net.minecraft.network.chat.Component;
@@ -22,10 +21,9 @@ public class EnchDescCommon {
     public EnchDescCommon(Path configPath) {
 
         this.config = ConfigSchema.load(configPath.resolve(Constants.MOD_ID + ".json").toFile());
-        Services.EVENTS.addItemTooltipListener(this::onItemTooltip);
     }
 
-    private void onItemTooltip(ItemStack stack, List<Component> tooltip, TooltipFlag tooltipFlag) {
+    public void onItemTooltip(ItemStack stack, TooltipFlag tooltipFlag, List<Component> tooltip) {
 
         if (this.config.enableMod && !stack.isEmpty() && stack.hasTag()) {
 
